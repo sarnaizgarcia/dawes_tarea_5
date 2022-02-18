@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +23,14 @@ public class EventoController {
 		return eventoDao.buscarTodos();
 	}
 	
-	
+	@PostMapping("/alta")
+	public String procesarAlta(@RequestBody Evento evento) {
+		if (eventoDao.altaEvento(evento) == 1) {	
+			return "Evento dado de Alta";
+		} else {
+			return "No se pudo dar de alta el evento";
+		}
+	}
 	
 //	“/activos”:
 //		Devolver todos los eventos activos

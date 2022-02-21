@@ -14,6 +14,5 @@ public interface IntEventoDao {
 	int modificarEvento(Evento evento);
 	int eliminarEvento(int idEvento);
 	List<Evento> buscarPorSubcadena(String subcadena);
-	int buscarPlazasLibres(int idEvento);
 
 }

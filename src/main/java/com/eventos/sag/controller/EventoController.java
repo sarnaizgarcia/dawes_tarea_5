@@ -14,13 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.eventos.sag.modelo.beans.Evento;
 import com.eventos.sag.modelo.dao.IntEventoDao;
+import com.eventos.sag.modelo.dao.IntReservaDao;
 
 @RestController
 @RequestMapping("/rest/eventos")
 public class EventoController {
 	
 	@Autowired
-	private IntEventoDao eventoDao; 
+	private IntEventoDao eventoDao;
+	
+	@Autowired
+	private IntReservaDao reservaDao;
 	
 	@GetMapping("/activos")
 	public List<Evento> verEventosActivos() {
@@ -71,7 +75,7 @@ public class EventoController {
 
 	@GetMapping("/plazasQuedan/{idEvento}")
 	public String vezPlazasLibres(@PathVariable("idEvento") int idEvento) {
-		int plazasDisponibles = eventoDao.buscarPlazasLibres(idEvento);
+		int plazasDisponibles = reservaDao.buscarPlazasLibes(idEvento);
 		return "{quedan_plazas}: " + plazasDisponibles + "}";
 	}
 	

@@ -64,9 +64,4 @@ public class EventoDaoImpl implements IntEventoDao {
 		return eventoRepository.buscarPorSubcadena(subcadena);
 	}
 
-	@Override
-	public int buscarPlazasLibres(int idEvento) {
-		return eventoRepository.buscarPlazasLibes(idEvento);
-	}
-
 }

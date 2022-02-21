@@ -18,7 +18,4 @@ public interface IntEventoRepository extends JpaRepository<Evento, Integer> {
 	
 	@Query("select e from Evento e where e.nombre like %:subcadena%")
 	List<Evento> buscarPorSubcadena(@PathVariable("subcadena") String subcadena);
-	
-	@Query("select e.aforoMaximo-SUM(r.cantidad) from Reserva r,Evento e where e.idEvento = r.evento.idEvento and e.idEvento=?1")
-	int buscarPlazasLibes(@PathVariable("idEvento") int idEvento);
 }
